@@ -1,0 +1,161 @@
+#:kivy 1.10.0
+
+ScreenManager:
+    id: screen_manager
+
+    Screen:
+        name: 'VerticalBoxScreen'
+        manager: screen_manager
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Button:
+                text: 'horizontal box'
+                on_press: root.current = 'HorizontalBoxScreen'
+            Button:
+                text: 'column grid'
+                on_press: root.current = 'ColumnGridScreen'
+            Button:
+                text: 'row grid'
+                on_press: root.current = 'RowGridScreen'
+            Button:
+                text: 'complicated'
+                on_press: root.current = 'ComplicatedScreen'
+            AddButton:
+                text: 'hi der 0'
+
+    Screen:
+        name: 'HorizontalBoxScreen'
+        manager: screen_manager
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Button:
+                text: 'vertical box'
+                on_press: root.current = 'VerticalBoxScreen'
+            Button:
+                text: 'column grid'
+                on_press: root.current = 'ColumnGridScreen'
+            Button:
+                text: 'row grid'
+                on_press: root.current = 'RowGridScreen'
+            Button:
+                text: 'complicated'
+                on_press: root.current = 'ComplicatedScreen'
+            AddButton:
+                text: 'hi der 0'
+
+    Screen:
+        name: 'ColumnGridScreen'
+        manager: screen_manager
+
+        GridLayout:
+            cols: 3
+
+            Button:
+                text: 'vertical box'
+                on_press: root.current = 'VerticalBoxScreen'
+            Button:
+                text: 'horizontal box'
+                on_press: root.current = 'HorizontalBoxScreen'
+            Button:
+                text: 'row grid'
+                on_press: root.current = 'RowGridScreen'
+            Button:
+                text: 'complicated'
+                on_press: root.current = 'ComplicatedScreen'
+            AddButton:
+                text: 'hi der 0'
+
+    Screen:
+        name: 'RowGridScreen'
+        manager: screen_manager
+
+        GridLayout:
+            rows: 3
+
+            Button:
+                text: 'vertical box'
+                on_press: root.current = 'VerticalBoxScreen'
+            Button:
+                text: 'horizontal box'
+                on_press: root.current = 'HorizontalBoxScreen'
+            Button:
+                text: 'column grid'
+                on_press: root.current = 'ColumnGridScreen'
+            Button:
+                text: 'complicated'
+                on_press: root.current = 'ComplicatedScreen'
+            AddButton:
+                text: 'hi der 0'
+
+    Screen:
+        name: 'ComplicatedScreen'
+        manager: screen_manager
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            BoxLayout:
+                size_hint: (0.25, 1)
+                orientation: 'vertical'
+
+                Button:
+                    text: 'vertical box'
+                    on_press: root.current = 'VerticalBoxScreen'
+                Button:
+                    text: 'horizontal box'
+                    on_press: root.current = 'HorizontalBoxScreen'
+                Button:
+                    text: 'column grid'
+                    on_press: root.current = 'ColumnGridScreen'
+                Button:
+                    text: 'row grid'
+                    on_press: root.current = 'RowGridScreen'
+
+            BoxLayout:
+                size_hint: (0.25, 1)
+                orientation: 'vertical'
+
+                canvas.before:
+                    Color:
+                        rgba: 0.65, 0.85, 0.9, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            StackLayout:
+                size_hint: (0.5, 1)
+                orientation: 'tb-lr'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+
+                    Label:
+                        text: 'Some setting'
+                        size_hint_y: 0.1
+                        size_hint_x: 0.5
+                    TextInput:
+                        multiline: False
+                        hint_text: 'Type here'
+                        size_hint_y: 0.1
+                        size_hint_x: 0.5
+
+                BoxLayout:
+                    orientation: 'horizontal'
+
+                    Label:
+                        text: 'Another setting'
+                        size_hint_y: 0.1
+                        size_hint_x: 0.5
+                    TextInput:
+                        multiline: False
+                        hint_text: 'Type here'
+                        size_hint_y: 0.1
+                        size_hint_x: 0.5
+
+<AddButton>:
+    on_press: self.clicked()
+
