@@ -141,3 +141,8 @@ if __name__ == '__main__':
     MyApp().run()
 ```
 This is a Python thing that tells Python to run our Kivy app. `MyApp` should match the name of your app class. Aside from this, you can copy and paste this for every Kivy app.
+
+## Pong
+This is based directly on [Kivy's Pong Game Tutorial](https://kivy.org/docs/tutorials/pong.html).
+
+My recommendation is to go through the [pong.py](./pong.py) and [pong.kv](./pong.kv) files here that have my comments _and_ the tutorial on the Kivy site. We have different manners of explaining things. What's most important is that you understand what's going on, so spend more time with whichever version helps you understand things better.

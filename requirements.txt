@@ -1,6 +1,5 @@
-certifi==2018.1.18
 chardet==3.0.4
-Cython==0.25.2
+Cython==0.26
 docutils==0.14
 idna==2.6
 Kivy==1.10.0
