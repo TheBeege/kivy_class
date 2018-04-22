@@ -40,6 +40,7 @@ Password: pr0grammingisHARDbutyoucandoit!
 ```
 
 ### Setting up a Virtual Machine for yourself?
+We're not going to go into why we do each of these steps. This is a one-time setup, unless you plan on becoming a major Linux user. If that is something you're interested in, let me know in Discord, and I can explain things to you.
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads) for Windows Hosts (assuming you're on Windows)
 2. [Download the Ubuntu ISO](https://www.ubuntu.com/download/desktop) for version 16.04.4 LTS (or similar number)
 3. In VirtualBox, click the blue New button on the top left
@@ -47,30 +48,23 @@ Password: pr0grammingisHARDbutyoucandoit!
 5. I usually set memory to 4096 MB, as most of the laptops I use have 8 GB of memory or more. Set this to something reasonable for your hardware.
 6. Create a virtual hard disk now
 7. Stick with VDI, it's simplest
-8. Go with Dynamically allocated. Writes will be slightly slower while the system reserves space on the host disk, but it allows us to get started more quickly.
+8. Go with Dynamically allocated
 9. For hard disk size, 10 GB _should_ be enough, but I usually set it to 30 GB for good measure
 10. Select the VM in the list on the left and hit the green Start arrow at the top
 11. Click the folder icon with the green up arrow and navigate to and select the Ubuntu ISO you downloaded
 12. Go through the setup. It should be pretty self-explanatory
 13. Restart as requested
 14. Login
-15. After a moment, the software updater will appear and ask if you want to update. Say yes
-16. After restarting, hit the Windows Key, type in Ubuntu Software, and hit enter
-17. Search for "PyCharm CE" and install it
-18. Restart the VM once PyCharm installs. For some reason, it didn't seem to update the Unity programs index for me
-19. Hit the Windows Key, type in PyCharm, and hit enter
-20. Accept the terms
-21. I recommend the Darcula theme and skipping remaining options to set defaults
-22. Hit the Windows Key, type in Terminal, and hit enter
-23. Copy `sudo add-apt-repository ppa:kivy-team/kivy`, hit enter, enter your password, and hit enter again when prompted
-24. Copy the below, hit enter, hit `y` when prompted, and do a little dance. You have Kivy installed
+15. After a moment, the software updater will appear and ask if you want to update. Say yes. You'll be asked to restart the virtual machine. Please do it.
+16. After restarting, hit the Windows Key, type in Terminal, and hit enter
+17. Copy `sudo add-apt-repository ppa:kivy-team/kivy`, hit enter, enter your password, and hit enter again when prompted
+18. Copy the below, hit enter, hit `y` when prompted, and do a little dance. You have Kivy installed
 ```bash
 sudo apt-get install -y \
     python-pip \
     build-essential \
     git \
     vim \
-    python3 \
     python3-dev \
     ffmpeg \
     libsdl2-dev \
@@ -87,7 +81,7 @@ sudo apt-get install -y \
     gstreamer1.0-plugins-good \
     openjdk-8-jdk
 ```
-25. Good job! Now, you're ready to start on class 1
+19. Good job! Now, you're ready to start on class 1
 
 
 ## Other Notes
