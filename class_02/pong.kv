@@ -1,51 +1,75 @@
 #:kivy 1.10.0
+# similar to kivy.require(...), this tells our program what version of Kivy must be used
 
 <PongBall>:
+    # This tells Kivy how a PongBall class should be drawn
     size: 50, 50
+    # Its size should be 50 wide and 50 tall
     canvas:
+        # The canvas is an area for drawing shapes, similar to a painting canvas
         Ellipse:
+            # An ellipse is like a stretched circle, but it can also be a circle
             pos: self.pos
+            # The position of the ellipse is the position of the PongBall widget
             size: self.size
+            # The size of the ball is also the size of the PongBall widget
 
 <PongPaddle>:
     size: 25, 200
     canvas:
         Rectangle:
+            # Instead of an ellipse, we use a rectangle for the paddles
             pos:self.pos
             size:self.size
 
 <PongGame>:
+    # PongGame is the Widget being returned by our app's build function, so it is the whole game screen
     ball: pong_ball
     player1: player_left
     player2: player_right
+    # Remember those object properties we defined in the PongGame class? Here, we tie the balls and players together
+    # to the PongGame class. pong_ball, player_left, and player_right are all IDs defined in this kv file.
+    # We use IDs because we can have multiple copies of objects. Even here, this is happening. Each player is
+    # actually a PongPaddle, so we use IDs to distinguish between each one.
 
     canvas:
         Rectangle:
             pos: self.center_x-5, 0
             size: 10, self.height
+    # There shouldn't be any surprises here. This rectangle is drawing the line in the middle that separates the two sides
+
+    PongBall:
+        id: pong_ball
+        center: self.parent.center
+    # This takes a PongBall object, as defined in both Python and <PongBall> above, and creates one within PongGame
+    # We give it an ID of pong_ball so that we can reference it above
+
+    PongPaddle:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+    # This is similar to the PongBall object above. Notice that we actually can have two PongPaddle objects. We
+    # can distinguish them using the ID defined for each.
+
+    PongPaddle:
+        id: player_right
+        x: root.width-self.width
+        center_y: root.center_y
 
     Label:
         font_size: 70
         center_x: root.width / 4
         top: root.top - 50
         text: str(root.player1.score)
+    # A Label is a way of placing text on the screen. Most things here should be pretty self explanatory, but let's go
+    # over the unclear parts.
+    # root represents the top-level thing this part is inside. In this case, it's <PongGame>
+    # Notice above that player1 is set directly under <PongGame>. This means, we can access player1 from the root.
+    # player1 is a PongPaddle object, so it has a score property that we can access. All we need to do is convert
+    # it to a string using the str(...) method
 
     Label:
         font_size: 70
         center_x: root.width * 3 / 4
         top: root.top - 50
         text: str(root.player2.score)
-
-    PongBall:
-        id: pong_ball
-        center: self.parent.center
-
-    PongPaddle:
-        id: player_left
-        x: root.x
-        center_y: root.center_y
-
-    PongPaddle:
-        id: player_right
-        x: root.width-self.width
-        center_y: root.center_y
