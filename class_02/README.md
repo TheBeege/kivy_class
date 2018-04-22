@@ -1,4 +1,5 @@
 # Class 2
+In this class, we'll go over making the game Pong in Kivy, and we'll practice using the KV language for putting objects on the screen.
 
 ## Pong
 Before going through the code, create a new run configuration (see steps 5 through 11 in "Our First Kivy Program") to run `pong.py` and see how the game plays. Mentally note each part of the game, the rules each part follows, and what sort of logic you think might go into making things behave the ways they do.

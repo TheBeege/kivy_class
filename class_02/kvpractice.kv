@@ -1,18 +1,28 @@
 #:kivy 1.10.0
 
 ScreenManager:
-    id: screen_manager
+    # ScreenManager is a way to have multiple, separate screens in your app in a super easy way. It handles screen
+    # transitions, adding a nice, polished feel to how your app moves. It's especially useful for things like
+    # fullscreen menus. By default, it uses a slide transition between screens, but you can change this.
+    # See https://kivy.org/docs/api-kivy.uix.screenmanager.html for more details
 
     Screen:
+        # Screens are only useful with ScreenManagers, but they're how you can separate different portions of your app
         name: 'VerticalBoxScreen'
-        manager: screen_manager
+        # The name is how the screen manager can recognize this screen
+        manager: root
+        # Each screen needs to know which manager it belongs to. We handle that here
 
         BoxLayout:
+            # A BoxLayout simple stacks each element in some direction, based on the orientation
             orientation: 'vertical'
+            # Here, the orientation is vertical. This means that everything we add inside this BoxLayout will
+            # be added to the bottom of the existing items, stacking vertically
 
             Button:
                 text: 'horizontal box'
                 on_press: root.current = 'HorizontalBoxScreen'
+                # When this button is pressed, it tells the ScreenManager to switch to the HorizontalBoxScreen
             Button:
                 text: 'column grid'
                 on_press: root.current = 'ColumnGridScreen'
@@ -24,13 +34,16 @@ ScreenManager:
                 on_press: root.current = 'ComplicatedScreen'
             AddButton:
                 text: 'hi der 0'
+            # Remember our AddButton? Here it is in action
 
     Screen:
         name: 'HorizontalBoxScreen'
-        manager: screen_manager
+        manager: root
 
         BoxLayout:
             orientation: 'horizontal'
+            # This is the same as the vertical screen above, except that items will be stacked horizontally,
+            # adding to the right
 
             Button:
                 text: 'vertical box'
@@ -49,10 +62,14 @@ ScreenManager:
 
     Screen:
         name: 'ColumnGridScreen'
-        manager: screen_manager
+        manager: root
 
         GridLayout:
+            # The GridLayout positions items inside according to a grid of rows and columns. You specify either rows
+            # or cols to set the constraint
             cols: 3
+            # Here, we've set cols to 3. This means that for all child items, they'll be divided into 3 columns. If
+            # there are more items than columns, they'll wrap around back to the beginning in a new row
 
             Button:
                 text: 'vertical box'
@@ -71,10 +88,12 @@ ScreenManager:
 
     Screen:
         name: 'RowGridScreen'
-        manager: screen_manager
+        manager: root
 
         GridLayout:
             rows: 3
+            # This is the same as the VerticalRowGrid screen, except that it's constrained to 3 rows and will add new
+            # columns as necessary
 
             Button:
                 text: 'vertical box'
@@ -93,14 +112,21 @@ ScreenManager:
 
     Screen:
         name: 'ComplicatedScreen'
-        manager: screen_manager
+        manager: root
+        # This screen will be divided into three top-level sections and will have layouts inside layouts
+        # Layoutception.
 
         BoxLayout:
             orientation: 'horizontal'
+            # This BoxLayout will act as the top-level layout. Other layouts will be added inside this
 
             BoxLayout:
+                # Thanks to the parent BoxLayout, this layout will appear as a column on the left
                 size_hint: (0.25, 1)
+                # This size hint means that it will take up 1/4 of the available horizontal space compared to the other
+                # layouts and the entire vertical space
                 orientation: 'vertical'
+                # The items inside this layout will be stacked vertically
 
                 Button:
                     text: 'vertical box'
@@ -118,6 +144,7 @@ ScreenManager:
             BoxLayout:
                 size_hint: (0.25, 1)
                 orientation: 'vertical'
+                # This one will also be a 1/4 column
 
                 canvas.before:
                     Color:
@@ -125,10 +152,12 @@ ScreenManager:
                     Rectangle:
                         pos: self.pos
                         size: self.size
+                # In this case, we're creating a light blue background that takes up the whole size of this layout
 
             StackLayout:
                 size_hint: (0.5, 1)
                 orientation: 'tb-lr'
+                # This... doesn't work the way I expected, but it takes up the last half of the screen
 
                 BoxLayout:
                     orientation: 'horizontal'
@@ -142,6 +171,11 @@ ScreenManager:
                         hint_text: 'Type here'
                         size_hint_y: 0.1
                         size_hint_x: 0.5
+                    # A TextInput is a section to write text in. The hint_text is is the text that
+                    # appears in the text box before you write any text in it
+                    # Setting multiline to false makes it a single line of text rather than a paragraph-style input
+                    # Since both the Label and TextInput are using a size_hint_x of 0.5, they take up half the
+                    # available space of their parent layout
 
                 BoxLayout:
                     orientation: 'horizontal'
