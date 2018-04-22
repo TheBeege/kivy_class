@@ -62,4 +62,82 @@ I wrote this from memory, so it may not be exactly perfect. If you find an error
 You're ready to go!
 
 ## Our First Kivy Program
-https://kivy.org/docs/guide/basic.html#quickstart
+This is based on the [Kivy Quickstart](https://kivy.org/docs/guide/basic.html#quickstart).
+
+1. Make sure the Project pane appears on the left. If not, go to View > Tool Windows > Project in the menu at the top of the screen.
+2. Right click the project folder and select New > Python File
+3. Set the name as quickstart.py and hit enter. The file should open in the main editor pane
+4. Copy and paste the below code:
+```python
+import kivy
+kivy.require('1.10.0') # replace with your current kivy version !
+
+from kivy.app import App
+from kivy.uix.label import Label
+
+
+class MyApp(App):
+
+    def build(self):
+        return Label(text='Hello world')
+
+
+if __name__ == '__main__':
+    MyApp().run()
+```
+5. In the top right corner of PyCharm, you should see a drop-down box. Click that and select Edit Configurations
+6. At the top left of the Run/Debug Configurations window, click the + symbol and select Python
+7. Set the name as Quickstart
+8. To the right of the Script Path text input, click the three dots
+9. Navigate to and select quickstart.py
+10. Hit OK.
+11. Click the green arrow next to the drop-down box.
+12. You should see red text in the bottom pane and a black window with the text "Hello world"
+13. Congratulations! You've run your first Kivy program! Let's break down what this code is doing
+
+```python
+import kivy
+```
+This tells Python we're going to use Kivy and makes it available for our program to use.
+
+```python
+kivy.require('1.10.0')
+```
+This causes our program to fail if it's not running Kivy version 1.10.0. It's a nice safety measure. Older or newer versions of Kivy may use different things, so we can use this to ensure Kivy has exactly what we expect. It's not a requirement, but it's strongly recommended.
+
+```python
+from kivy.app import App
+```
+This imports the `App` class from Kivy. The `App` class is the basis of a Kivy app. It handles creating the window, shutdown, all that sort of basic stuff that we don't want to worry about. Your main Kivy class should inherit from this `App` class, as you'll see shortly.
+
+```python
+from kivy.uix.label import Label
+```
+This imports the `Label` class from kivy. The `Label` class is a visual element (or `Widget`) that shows text on the screen.
+
+```python
+class MyApp(App):
+```
+This creates a new class called `MyApp` that inherits from `App`. For folks from our Python class, this should be verify familiar.
+
+For folks from our Java class, this is how we define classes in Python. Instead of saying `extends ParentClass`, we simply put the parent class in parenthesis. Additionally, instead of using curly brackets, we use a colon followed by indentation. Python uses indentation to manage scopes instead of curly braces. This enforces easily readable code, whereas Java could fit an entire program on one line and be incredibly difficult to read.
+
+```python
+def build(self):
+```
+The `build` method is used by an `App` to set everything up when the app first starts. Basically, it lays out the first steps Kivy should take when your app starts.
+
+For folks from our Java class, this is how we define a method. Notice there is no return type. Python doesn't require you to explicitly state what types everything is. Python just tries to do things as you tell it to, disregarding type. If a method or property is missing, it simply breaks. While this makes code faster to write, it doesn't protect you from coding mistakes. Java makes things a little safer in this regard. `def` tells Python that this is a method definition. `build` is the name of the method. `self` is a way to give the method the ability to reference the object it's being used on. It's equivalent to Java's `this` and is required for all instance methods. You can think of adding the `self` parameter as making it a non-`static` method. By default, everything in Python is static. This changes that.
+
+```python
+return Label(text='Hello world')
+```
+This tells Kivy to display a `Label` as the main thing in the app. For `Label`s and most other `Widget`s, they take in optional parameters to set things. In this case, the text of the label is being set to "Hello world"
+
+For our Java folks, there's a lot going on here. First off, `Label(...)` is calling `Label`s constructor. Python does not require a `new` keyword like Java does. Second, Python has the idea of optional parameters. In Java, if we wanted a method to accept different parameters, we would need to overload the method by defining multiple versions of the method. In Python, this is avoided. You can define methods with a default value like `my_method(param='default')`. In this case, a parameter called `param` has a default value of the string `default`. If we omit parameter, `param` will be set to `'default'`. Additionally, the order of parameters in Python is not strict. If we specify parameters by name, i.e. `text="Hello world"`, we can call parameters in any order we want. Lastly, Python allows use of both single quotes `''` and double quotes `""` for strings.
+
+```python
+if __name__ == '__main__':
+    MyApp().run()
+```
+This is a Python thing that tells Python to run our Kivy app. `MyApp` should match the name of your app class. Aside from this, you can copy and paste this for every Kivy app.
