@@ -35,9 +35,19 @@ class PongApp(App):
         This sets up our "game loop". Games run by using an infinite loop to continuously update game objects and keep
         the game running. Usually, the function run by the loop is called "update", and we maintain that convention 
         here, too. On our main game widget, we defined an update function that we'll use here.
-        
+        Clock.schedule_interval is a Kivy method that allows us to setup a function to be called on a repeating 
+        schedule until the app is closed. We'll use this to setup our game loop.
+        The second parameter, `1.0 / 60.0`, sets up our game loop to run 60 times per second. 
+        In reality, video is just still images changing really fast. When you see movies, maybe you've noticed many
+        things say "motion pictures". Movies are just tons of individual photos changing really quickly. The images
+        are swapped so quickly that your eyes see it as continuous movement rather than images being swapped out.
+        Movies actually run at 24 images every second. We call these images "frames" and say that moves run at
+        24 frames per second, or 24 fps. Most computer videos and games run at either 30 fps or 60 fps. We'll run ours
+        at 60 fps because we're cool like that. Doing 1.0 / 60.0 will get us the amount of time that one second 
+        divided into 60 parts gives us, and therefore, how much time to wait between running update each time.
         '''
         return game
+        # Everything in our game is inside the PongGame widget, so we return that widget for Kivy to display
 
 
 class PongGame(Widget):

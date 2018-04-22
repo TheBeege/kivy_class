@@ -11,22 +11,24 @@ We'll cover how Kivy works and how to use it. We'll cover setting up Kivy, key f
       * Beware that you can't currently deploy to Android with Kivy on Windows. I recommend using a virtual machine running Ubuntu. I tried with CentOS with little success. For guidance on how to do this, look for the Virtual Machine for Windows section in this document.
     * [OS X](https://kivy.org/docs/installation/installation-osx.html)
     * [Ubuntu](https://kivy.org/docs/installation/installation-linux.html)
-  * Running our first program
-    * [Creating the Pong game](https://kivy.org/docs/tutorials/pong.html)
+  * Running our first program: [quickstart](https://kivy.org/docs/guide/basic.html#quickstart)
 * 2018-04-21 - [Class 2](./class_02)
+  * [Creating the Pong game](https://kivy.org/docs/tutorials/pong.html)
   * [Kv Design Language](https://kivy.org/docs/guide/lang.html)
   * [Properties](https://kivy.org/docs/guide/events.html#introduction-to-properties)
-  * [Canvas](https://kivy.org/docs/guide/graphics.html)
 * 2018-04-28 - [Class 3](class_03)
+  * [Canvas](https://kivy.org/docs/guide/graphics.html)
   * Input
   * Android APIs
   * Deploying to Android
-### Second section - 2 weeks: Guided project
+### Second section - 3 weeks: Guided project
 * 2018-05-12
 * 2018-05-19
-### Third section - 2 weeks: Group project
 * 2018-05-26
+### Third section - 3 weeks: Group project
 * 2018-06-02
+* 2018-06-09
+* 2018-06-16
 
 
 ## Virtual Machine for Windows
