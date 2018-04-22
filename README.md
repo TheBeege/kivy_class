@@ -1,30 +1,98 @@
-# Stuff
+# Kivy Class
 
-## Install
-https://kivy.org/docs/installation/installation-windows.html#installation-windows
-1. Setup in PyCharm (virtual environment)
-2. `python -m pip install --upgrade pip wheel setuptools`
-3. `python -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew`
-4. `python -m pip install kivy.deps.gstreamer`
-5. `python -m pip install kivy`
+Need to get in touch? Message me on our [Discord server](https://discord.gg/8SkRUTc).
 
-## Base Program
-https://kivy.org/docs/guide/basic.html#quickstart
+## Schedule
+### First section - 3 weeks
+We'll cover how Kivy works and how to use it. We'll cover setting up Kivy, key features, and best practices.
+* 2018-04-14 - [Class 1](./class_01)
+  * Installing Kivy
+    * [Windows](https://kivy.org/docs/installation/installation-windows.html)
+      * Beware that you can't currently deploy to Android with Kivy on Windows. I recommend using a virtual machine running Ubuntu. I tried with CentOS with little success. For guidance on how to do this, look for the Virtual Machine for Windows section in this document.
+    * [OS X](https://kivy.org/docs/installation/installation-osx.html)
+    * [Ubuntu](https://kivy.org/docs/installation/installation-linux.html)
+  * Running our first program
+    * [Creating the Pong game](https://kivy.org/docs/tutorials/pong.html)
+* 2018-04-21 - [Class 2](./class_02)
+  * [Kv Design Language](https://kivy.org/docs/guide/lang.html)
+  * [Properties](https://kivy.org/docs/guide/events.html#introduction-to-properties)
+  * [Canvas](https://kivy.org/docs/guide/graphics.html)
+* 2018-04-28 - [Class 3](class_03)
+  * Input
+  * Android APIs
+  * Deploying to Android
+### Second section - 2 weeks: Guided project
+* 2018-05-12
+* 2018-05-19
+### Third section - 2 weeks: Group project
+* 2018-05-26
+* 2018-06-02
 
-## Android
-https://kivy.org/docs/guide/packaging-android.html#packaging-android
-https://python-for-android.readthedocs.io/en/latest/quickstart/
-* https://python-for-android.readthedocs.io/en/latest/quickstart/
-    * https://developer.android.com/studio/index.html#downloads
-        * Get just the command line tools
-    * https://developer.android.com/ndk/downloads/index.html
-    * Unzip both to some folder, maybe Documents
-    * Install SDKs and dependencies
-        * Go to the tools directory
-        * `$SDK_DIR/tools/bin/sdkmanager "platforms;android-19"`
-        * `$SDK_DIR/tools/bin/sdkmanager --list` to list available build tools
-        * `$SDK_DIR/tools/bin/sdkmanager "build-tools;27.0.3"
-* Setup pip for android
-    * `pip install python-for-android`
-    * test: `python-for-android recipes`
-    *
+
+## Virtual Machine for Windows
+If you want to deploy to Android or OS X, Windows won't work. The tools simply do not support Windows yet. To get around this, we can use Linux. We can setup a virtual machine (VM) to run Linux inside your Windows computer. I setup a VM on USB that I can give you during class, but I recommend you follow the setting up instructions below to save class time. If you can't setup the VM yourself successfully, we'll set you up in class.
+
+### Using the class VM?
+Use the below login info. Kivy and PyCharm are already setup for you.
+```
+Username: student
+Password: pr0grammingisHARDbutyoucandoit!
+```
+
+### Setting up a Virtual Machine for yourself?
+1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads) for Windows Hosts (assuming you're on Windows)
+2. [Download the Ubuntu ISO](https://www.ubuntu.com/download/desktop) for version 16.04.4 LTS (or similar number)
+3. In VirtualBox, click the blue New button on the top left
+4. Set the name as Ubuntu, and it will automatically set the other things
+5. I usually set memory to 4096 MB, as most of the laptops I use have 8 GB of memory or more. Set this to something reasonable for your hardware.
+6. Create a virtual hard disk now
+7. Stick with VDI, it's simplest
+8. Go with Dynamically allocated. Writes will be slightly slower while the system reserves space on the host disk, but it allows us to get started more quickly.
+9. For hard disk size, 10 GB _should_ be enough, but I usually set it to 30 GB for good measure
+10. Select the VM in the list on the left and hit the green Start arrow at the top
+11. Click the folder icon with the green up arrow and navigate to and select the Ubuntu ISO you downloaded
+12. Go through the setup. It should be pretty self-explanatory
+13. Restart as requested
+14. Login
+15. After a moment, the software updater will appear and ask if you want to update. Say yes
+16. After restarting, hit the Windows Key, type in Ubuntu Software, and hit enter
+17. Search for "PyCharm CE" and install it
+18. Restart the VM once PyCharm installs. For some reason, it didn't seem to update the Unity programs index for me
+19. Hit the Windows Key, type in PyCharm, and hit enter
+20. Accept the terms
+21. I recommend the Darcula theme and skipping remaining options to set defaults
+22. Hit the Windows Key, type in Terminal, and hit enter
+23. Copy `sudo add-apt-repository ppa:kivy-team/kivy`, hit enter, enter your password, and hit enter again when prompted
+24. Copy the below, hit enter, hit `y` when prompted, and do a little dance. You have Kivy installed
+```bash
+sudo apt-get install -y \
+    python-pip \
+    build-essential \
+    git \
+    vim \
+    python3 \
+    python3-dev \
+    ffmpeg \
+    libsdl2-dev \
+    libsdl2-image-dev \
+    libsdl2-mixer-dev \
+    libsdl2-ttf-dev \
+    libportmidi-dev \
+    libswscale-dev \
+    libavformat-dev \
+    libavcodec-dev \
+    zlib1g-dev \
+    libgstreamer1.0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    openjdk-8-jdk
+```
+25. Good job! Now, you're ready to start on class 1
+
+
+## Other Notes
+We want Cython 0.26
+
+[KV File highlighting in PyCharm](https://stackoverflow.com/questions/38002630/how-to-get-syntax-highlighting-on-kivy-kv-file-in-pycharm-on-osx?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
+[Buildozer install instructions for Python3](https://pypi.python.org/pypi/buildozer/0.34)
