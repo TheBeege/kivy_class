@@ -28,7 +28,16 @@ You should be using the virtual machine for this class. Look at the README in th
 ### Installing PyCharm
 
 #### OS X
-
+I wrote this from memory, so it may not be exactly perfect. If you find an error, please let me know in Discord.
+1. In your browser, go to the [Pycharm download page](https://www.jetbrains.com/pycharm/download/#section=mac)
+2. Click the black download button under Community and save it
+3. When the download finishes, open it from your download folder
+4. A new window should pop up with the PyCharm logo and the Applications folder. Drag the PyCharm logo onto the Applications folder. This may take some time, so be patient and don't repeat it.
+5. Double click the Applications folder to open it
+6. Scroll down to find PyCharm and double-click it to open it
+7. Accept the terms
+8. I recommend the Darcula theme and skipping remaining options to set defaults
+9. In the dock on the bottom, right-click the PyCharm logo, go to options, and select "Keep in dock"
 
 #### Ubuntu
 1. Hit the Windows Key, type in Ubuntu Software, and hit enter
@@ -37,11 +46,9 @@ You should be using the virtual machine for this class. Look at the README in th
 4. Hit the Windows Key, type in PyCharm, and hit enter
 5. Accept the terms
 6. I recommend the Darcula theme and skipping remaining options to set defaults
+7. On the launcher dock on the left, right click the PyCharm logo and select "Lock to Launcher"
 
 ## Setting up a Kivy project
-
-### Extra Ubuntu Setup
-On Ubuntu, we have to install some extra things before we can actually start with Kivy. If you're using the class VM, this is already done for you. If you setup the VM yourself, you'll need to follow these instructions.
 
 
 ## Base Program
