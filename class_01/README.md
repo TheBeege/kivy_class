@@ -49,7 +49,17 @@ I wrote this from memory, so it may not be exactly perfect. If you find an error
 7. On the launcher dock on the left, right click the PyCharm logo and select "Lock to Launcher"
 
 ## Setting up a Kivy project
+1. Open PyCharm
+2. Select "Create New Project"
+3. In the location section, change "untitled" to the name of the project, maybe just "kivy_class"
+* Note: If there is a space in the location, find a different place to put it. Having a space in the location path will mess things up in all sorts of ways you do not want to deal with. To change the location, click the three dots to the right of the text input and navigate to a folder you want to use.
+4. At the top of the screen in the menu, click "View" and navigate to "Tool Windows" and select "Terminal"
+5. A panel at the bottom of PyCharm should appear
+6. In this panel, type `pip install --upgrade pip` and hit enter. This just gets us the latest version of the Python package manager
+7. Type `pip install Cython==0.26` and hit enter. This installs a package called Cython, which is a requirement for Kivy.
+8. Type `pip install kivy` and hit enter. This installs Kivy. It will take a long time. Be patient :)
 
+You're ready to go!
 
-## Base Program
+## Our First Kivy Program
 https://kivy.org/docs/guide/basic.html#quickstart
