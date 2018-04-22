@@ -157,19 +157,48 @@ class PongGame(Widget):
         '''
 
     def on_touch_move(self, touch):
+        """
+        In programming, often when you see a method starting with "on", it's something called an event handler. 
+        An event handler is a method that responds to some event happening. In this case, this method responds to 
+        a touch and move event. Remember that Kivy is designed for mobile apps, so a touch and move event is like
+        a click and drag on a computer. 
+        The touch parameter is a position on the screen, with an x value and a y value. 
+        """
         if touch.x < self.width / 3:
             self.player1.center_y = touch.y
         if touch.x > self.width - self.width / 3:
             self.player2.center_y = touch.y
+        '''
+        If the touch and drag is on the left third of the screen, move the center of player 1's paddle to the touch
+        location.
+        
+        If the touch and drag is on the right third of the screen, move the center of player 2's paddle to the touch
+        location.
+        '''
 
 
 class PongBall(Widget):
+    """
+    The PongBall Widget represents the ball that bounces back and forth across the screen.
+    """
     velocity_x = NumericProperty(0)
     velocity_y = NumericProperty(0)
     velocity = ReferenceListProperty(velocity_x, velocity_y)
+    '''
+    The X and Y velocity components are represented as numeric properties, allowing us to do Kivy things with them.
+    Velocity is a ReferenceListProperty, which is really just a Kivy version of a Python list. Here, it contains 
+    both the x and y components of the total velocity.
+    '''
 
     def move(self):
         self.pos = Vector(*self.velocity) + self.pos
+    '''
+    The move method is used by the update function to move the ball. It sets the ball's current position to its new
+    position based on its velocity. 
+    
+    Position is a Kivy vector, so we have to turn the velocity property into a Vector before adding it to the 
+    position. If we don't do this, Kivy would get confused and explode.
+    '''
 
 
 class PongPaddle(Widget):
@@ -177,15 +206,39 @@ class PongPaddle(Widget):
     PongPaddle represents the paddles controlled by the players in the game.
     """
     score = NumericProperty(0)
+    '''
+    By now, score should be easy to you :)
+    '''
 
     def bounce_ball(self, ball):
+        """
+        bounce_ball is used by the update function to bounce the ball off the paddle if necessary.
+        
+        The ball is given as a parameter because otherwise, the paddle would have no way to reach the ball in code
+        to change things about it, like its velocity. 
+        """
         if self.collide_widget(ball):
+            '''
+            collide_widget is a nifty function provided by Kivy Widgets to let us know if the current widget and the
+            widget given in the parameter have collided
+            ''' 
             vx, vy = ball.velocity
+            # Split out the velocity vector into its components for easy use
             offset = (ball.center_y - self.center_y) / (self.height / 2)
+            '''
+            The offset is for a nifty game behavior. It makes the paddles bounce the ball as if the paddles were 
+            rounded. If the ball is closer to the edge of the paddle, the ball will go more in the direction of 
+            that edge. If we didn't do this, the ball would just bounce horizontally forever, since nothing else
+            would be changing the direction of its velocity.
+            ''' 
             bounced = Vector(-1 * vx, vy)
+            # Create a Vector for the ball velocity, and change the direction of the X component, since it's bouncing
             vel = bounced * 1.1
+            # Every time it bounces, increase its velocity by 10% or 1/10 or 1.1. This makes it progressively faster
             ball.velocity = vel.x, vel.y + offset
+            # Set the ball's velocity to the velocity components we just calculated plus the offset 
 
 
 if __name__ == '__main__':
     PongApp().run()
+# You should know what this is by now
