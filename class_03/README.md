@@ -4,19 +4,13 @@
 Touch
 
 ## Android
-https://kivy.org/docs/guide/packaging-android.html#packaging-android
-https://python-for-android.readthedocs.io/en/latest/quickstart/
-* https://python-for-android.readthedocs.io/en/latest/quickstart/
-    * https://developer.android.com/studio/index.html#downloads
-        * Get just the command line tools
-    * https://developer.android.com/ndk/downloads/index.html
-    * Unzip both to some folder, maybe Documents
-    * Install SDKs and dependencies
-        * Go to the tools directory
-        * `$SDK_DIR/tools/bin/sdkmanager "platforms;android-19"`
-        * `$SDK_DIR/tools/bin/sdkmanager --list` to list available build tools
-        * `$SDK_DIR/tools/bin/sdkmanager "build-tools;27.0.3"
-* Setup pip for android
-    * `pip install python-for-android`
-    * test: `python-for-android recipes`
-    *
+See `Installing Buildozer with python3 support` at the [Github repository](https://github.com/kivy/buildozer)
+```
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install build-essential ccache git libncurses5:i386 libstdc++6:i386 libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 python2.7 python2.7-dev openjdk-8-jdk unzip zlib1g-dev zlib1g:i386
+```
+```
+pip install python-for-android
+~/.buildozer/android/platform/android-sdk-20/tools/android
+```
