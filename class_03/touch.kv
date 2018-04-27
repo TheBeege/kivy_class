@@ -1,0 +1,18 @@
+#:kivy 1.10.0
+
+<RootWidget>:
+    touch_spot: the_spot
+
+    TouchSpot:
+        id: the_spot
+
+<TouchSpot>:
+    size: 50, 50
+
+    canvas:
+        Color:
+            rgba: root.ellipse_rgb
+
+        Ellipse:
+            size: self.size
+            pos: self.pos

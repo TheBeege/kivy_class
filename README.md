@@ -17,8 +17,7 @@ We'll cover how Kivy works and how to use it. We'll cover setting up Kivy, key f
   * [Kv Design Language](https://kivy.org/docs/guide/lang.html)
   * [Properties](https://kivy.org/docs/guide/events.html#introduction-to-properties)
 * 2018-04-28 - [Class 3](class_03)
-  * [Canvas](https://kivy.org/docs/guide/graphics.html)
-  * Input
+  * [Input](https://kivy.org/docs/guide/inputs.html)
   * Android APIs
   * Deploying to Android
 ### Second section - 3 weeks: Guided project
