@@ -1,0 +1,18 @@
+#:kivy 1.10.0
+
+ScreenManager:
+    Screen:
+        name: 'Screen1'
+
+        Button:
+            text: 'Go to screen 2'
+            on_press: root.current = 'Screen2'
+
+    Screen:
+        name: 'Screen2'
+
+        Button:
+            text: 'Go to screen 1'
+            on_press: root.current = 'Screen1'
+        BoxLayout:
+            orientation: 'horizontal'
