@@ -1,0 +1,54 @@
+#:kivy 1.10.0
+
+ScreenManager:
+    timer_object: timer
+
+    Screen:
+        name: 'main'
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            BoxLayout: # Top bar
+                orientation: 'horizontal'
+                size_hint: (1, 0.1)
+
+                Button:
+                    text: 'Help'
+                    on_press: root.current = 'help'
+
+            BoxLayout: # Middle section
+                orientation: 'horizontal'
+                size_hint: (1, 0.8)
+
+                PomodoroTimer:
+                    id: timer
+
+
+            BoxLayout: # Bottom bar
+                orientation: 'horizontal'
+                size_hint: (1, 0.1)
+
+                # this is a comment
+                Button:
+                    text: 'Start'
+                    on_press: root.timer_object.start()
+
+                Button:
+                    text: 'Stop'
+                    on_press: root.timer_object.stop()
+
+                Button:
+                    text: 'Restart'
+                    on_press: root.timer_object.reset()
+
+    Screen:
+        name: 'help'
+
+        Button:
+            text: 'back'
+            on_press: root.current = 'main'
+
+<PomodoroTimer>:
+    font_size: '200sp'
+    text: str(int(root.seconds/60)).zfill(2) + ':' + str(root.seconds%60).zfill(2)
